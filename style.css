@@ -1,10 +1,10 @@
 /* --- Дизайн-Система: Переменные --- */
 :root {
-    --bg-primary: #F5F5DC; /* Чистый белый (Основной фон) */
-    --text-primary: #0A0A0A; /* Глубокий черный (Текст) */
-    --accent-primary: #8B5CF6; /* Лавандовый (Акцент) */
-    --bg-secondary: #F5F0E8; /* Теплый бежевый (Фон блоков) */
-    --micro-accent: #FFE5D9; /* Персиковый (Hover) */
+    --bg-primary: #ecc29a; /* СВЕТЛЫЙ ТАУП/ТЕПЛЫЙ БЕЖЕВЫЙ (Основной фон) - Исправлено */
+    --text-primary: #3C3633; /* ТЕМНО-КОРИЧНЕВЫЙ (Основной текст) */
+    --accent-primary: #A28A70; /* Тёплый БЕЖЕВЫЙ АКЦЕНТ */
+    --bg-secondary: #e2c9a7; /* Чуть более темный бежевый (Фон блоков) */
+    --micro-accent: #eccfa9; /* Оттенок для hover */
 
     --font-heading: 'Inter', sans-serif;
     --font-body: 'Lora', serif;
@@ -41,7 +41,8 @@ body {
     z-index: 9999;
     transition: transform 0.1s ease-out, background-color 0.2s ease-out, opacity 0.2s ease-out;
     transform: translate(-50%, -50%); 
-    mix-blend-mode: difference;
+    /* Фон светлый, используем difference */
+    mix-blend-mode: difference; 
 }
 
 /* --- Хедер (Sticky Header с эффектом сворачивания) --- */
@@ -54,7 +55,7 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: var(--bg-primary); 
-    gap: 40px; /* Разделение меню и блока авторизации */
+    gap: 40px; 
     transition: padding 0.3s ease, box-shadow 0.3s ease; 
 }
 
@@ -62,7 +63,8 @@ body {
 .header.header-scrolled {
     padding-top: 15px; 
     padding-bottom: 15px;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05); 
+    /* Тень становится более мягкой для светлого фона */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); 
 }
 
 .logo-link {
@@ -70,27 +72,47 @@ body {
 }
 
 .logo-wrapper {
+    /* Общие стили для контейнера логотипа */
+    display: flex; /* Для выравнивания изображения и текста */
+    align-items: center;
     font-size: 80px; 
     font-family: var(--font-heading);
     font-weight: 900;
-    /* Управляемая трансформация */
     transform: scale(var(--logo-scale));
     transition: transform 0.3s ease; 
     transform-origin: left center;
 }
 
+/* Styles for the logo image */
+.logo-image {
+    height: 60px; /* Базовый размер логотипа-картинки */
+    width: auto;
+    margin-right: 15px; 
+    transition: height 0.3s ease;
+}
+
+/* СТИЛИ ЛОГОТИПА ПРИ СКРОЛЛЕ */
+.header.header-scrolled .logo-image {
+    height: 40px; /* Уменьшаем размер логотипа при скролле */
+}
+
 /* Outline Text */
 .logo-text {
     color: transparent;
-    -webkit-text-stroke: 2px var(--text-primary);
+    /* Обводка должна быть темной */
+    -webkit-text-stroke: 2px var(--text-primary); 
     text-stroke: 2px var(--text-primary);
     transition: 0.3s ease;
+    /* Уменьшаем размер текста, чтобы акцентировать внимание на изображении */
+    font-size: 0.8em; 
+    line-height: 1;
+    white-space: nowrap; /* Не позволяет тексту переноситься */
 }
 
 .menu {
     flex-grow: 1;
     display: flex;
-    justify-content: flex-end; /* Сдвигаем навигацию вправо */
+    justify-content: flex-end; 
 }
 
 .menu a {
@@ -140,14 +162,13 @@ body {
 
 .register-button:hover {
     background-color: var(--accent-primary);
-    color: var(--bg-primary);
+    color: var(--bg-primary); /* Текст становится светлым на цветном фоне */
 }
 
 .search-icon {
-    /* Стиль поиска, перенесенный в auth-buttons */
     margin-left: 20px;
     font-size: 1.2em;
-    padding: 8px 0; /* Компенсируем padding, чтобы выровнять по высоте */
+    padding: 8px 0;
 }
 
 
@@ -168,7 +189,7 @@ body {
 .hero-headline {
     font-family: var(--font-heading);
     font-weight: 900;
-    font-size: 172px; 
+    font-size: 100px; /* УМЕНЬШЕНО: с 172px до 100px */
     line-height: 1.1;
     text-transform: uppercase;
     margin-bottom: 80px;
@@ -213,7 +234,7 @@ body {
 }
 
 .cta-button:hover {
-    color: var(--bg-primary); 
+    color: var(--bg-primary); /* Текст становится светлым на цветном фоне */
 }
 
 .cta-button:active {
@@ -242,9 +263,10 @@ body {
 }
 
 .card {
-    background-color: var(--bg-primary);
+    background-color: var(--bg-primary); 
     padding: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); 
+    /* Тень мягкая для светлого фона */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     border-radius: 4px;
     font-family: var(--font-body);
     font-size: 18px;
@@ -255,7 +277,7 @@ body {
 
 .card:hover {
     transform: translateY(-2px); 
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .card-large {
@@ -303,8 +325,10 @@ body {
     padding: 15px;
     margin-bottom: 20px;
     font-size: 18px;
-    border: 1px solid var(--text-primary);
-    background-color: transparent;
+    /* Темный текст, светлый фон поля */
+    border: 1px solid rgba(0, 0, 0, 0.2); 
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
     font-family: var(--font-body);
 }
 
@@ -319,7 +343,8 @@ body {
     margin-bottom: 40px;
     font-size: 24px;
     border: 2px solid var(--text-primary);
-    background-color: transparent;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
     font-family: var(--font-body);
 }
 
@@ -338,7 +363,8 @@ body {
 /* --- Футер --- */
 .footer {
     padding: 50px var(--padding-sides);
-    border-top: 1px solid rgba(10, 10, 10, 0.1); 
+    /* Темная граница на светлом фоне */
+    border-top: 1px solid rgba(0, 0, 0, 0.1); 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -355,4 +381,16 @@ body {
 
 .footer-links a:hover {
     color: var(--accent-primary);
+}
+
+/* Новый стиль для ссылок-карточек, чтобы они выглядели как блоки */
+.card-link {
+    display: block; /* Заставляет ссылку занимать всю карточку */
+    text-decoration: none;
+    color: var(--text-primary); /* Наследует цвет текста */
+}
+
+/* Убираем лишние отступы/тени при наведении на ссылку, чтобы избежать двойного эффекта */
+.card-link:hover {
+    color: var(--text-primary); /* Убираем стандартное изменение цвета ссылки */
 }
