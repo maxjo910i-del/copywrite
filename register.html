@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cherry1907 | Регистрация</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@900&family=Lora:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="custom-cursor"></div>
+    <header class="header">
+        <div class="logo-wrapper">
+            <a href="index.html" class="logo-link"><span class="logo-text">Cherry1907</span></a>
+        </div>
+        <nav class="menu">
+            <a href="articles.html" class="nav-item">Работы</a>
+            <a href="cases.html" class="nav-item">Кейсы</a>
+            <a href="forum.html" class="nav-item">Форум</a>
+            <a href="about-me.html" class="nav-item">Обо мне</a>
+            <a href="contact.html" class="nav-item">Контакты</a>
+        </nav>
+        <div class="auth-buttons">
+            <a href="login.html" class="auth-item login-button">Вход</a>
+            <a href="register.html" class="auth-item register-button active">Регистрация</a>
+            <a href="search.html" class="nav-item search-icon">🔎</a>
+        </div>
+    </header>
+    <main>
+        <section class="page-content-section scroll-reveal">
+            <h1 class="page-title">Регистрация</h1>
+            <p class="page-subtitle">Создайте аккаунт, чтобы сохранять статьи и участвовать в обсуждениях на форуме.</p>
+            <div class="page-body contact-form-mock" style="width: 400px; margin: 0 auto;">
+                <form id="registrationForm" onsubmit="return false;">
+                    
+                    <input type="text" placeholder="Имя пользователя" required>
+                    <input type="email" placeholder="Email (только @gmail.com)" id="reg-email" required>
+                    <input type="password" placeholder="Пароль (минимум 8 символов)" id="reg-password" required>
+                    
+                    <div id="registration-error" style="color: red; margin-bottom: 20px; font-weight: bold; display: none;"></div>
+
+                    <a href="javascript:void(0);" onclick="validateRegistration()" class="cta-button" style="width: 100%;">Зарегистрироваться</a>
+                    
+                    <p style="text-align: center; margin-top: 20px;"><a href="login.html" style="color: var(--text-primary);">Уже есть аккаунт? Войти</a></p>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="copyright">© 2026 Cherry1907. Editorial Minimalism. </p>
+        <div class="footer-links">
+             <a href="policy.html" class="footer-link">Политика</a>
+             <a href="sitemap.html" class="footer-link">Карта сайта</a>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
